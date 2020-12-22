@@ -4,11 +4,7 @@ import './SignIn.styles.sass';
 import FormInput from '../FormInput/FormInput.component';
 import CustomButton from '../CustomButton/CustomButton.component';
 
-import {
-  auth,
-  createUserProfileDocument,
-  signInWithGoogle,
-} from '../../firebase/firebase.utils';
+import { auth, signInWithGoogle } from '../../firebase/firebase.utils';
 
 export default class SignIn extends Component {
   constructor(props) {
