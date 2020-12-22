@@ -9,7 +9,7 @@ export const addItemToCart = (cartItems, cartItemToAdd) => {
     return cartItems.map((
       cartItem // map return new array
     ) =>
-      cartItem.id == cartItemToAdd.id // if current item id == new item id
+      cartItem.id === cartItemToAdd.id // if current item id == new item id
         ? { ...cartItem, quantity: cartItem.quantity + 1 }
         : cartItem
     );
