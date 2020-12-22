@@ -12,7 +12,6 @@ const userReducer = (state = INITIAL_STATE, action) => {
         currentUser: action.payload,
       };
     default:
-      console.warn("Action don't match. Returned previous state");
       return state;
   }
 };
