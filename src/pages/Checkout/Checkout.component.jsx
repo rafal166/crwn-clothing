@@ -10,6 +10,7 @@ import {
 import './Checkout.styles.sass';
 
 import CheckoutItem from '../../components/CheckoutItem/CheckoutItem.component';
+import StripeButton from '../../components/StripeButton/StripeButton.component';
 
 function Checkout({ cartItems, total }) {
   return (
@@ -25,6 +26,12 @@ function Checkout({ cartItems, total }) {
         <CheckoutItem cartItem={cartItem}></CheckoutItem>
       ))}
       <div className="total">TOTAL: ${total}</div>
+      <div className="test-warning">
+        *Please use the following test credit card for payments*
+        <br />
+        4242 4242 4242 4242 - Exp: 01/21 - CVV: 123
+      </div>
+      <StripeButton price={total}></StripeButton>
     </div>
   );
 }
