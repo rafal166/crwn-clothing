@@ -7,7 +7,7 @@ import rootReducer from './root-reducer';
 var composeEnhancers = null;
 var middlewares = null;
 var store = null;
-if (process.env.NODE_ENV !== 'development') {
+if (process.env.NODE_ENV === 'development') {
   // store for development
   composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
   middlewares = [logger];

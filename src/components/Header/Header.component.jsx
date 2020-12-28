@@ -3,7 +3,6 @@ import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
 
-import './Header.styles.sass';
 import { ReactComponent as Logo } from '../../assets/crown.svg';
 
 import { auth } from '../../firebase/firebase.utils';
@@ -13,38 +12,45 @@ import CartDropdown from '../CartDropdown/CartDropdown.component';
 import { selectCartHidden } from '../../redux/cart/cart.selectors';
 import { selectCurrentUser } from '../../redux/user/user.selector';
 
+import {
+	HeaderContainer,
+	LogoContainer,
+	OptionsContainer,
+	Option,
+} from './Header.styles';
+
 function Header({ currentUser, hidden }) {
-  return (
-    <div className="header">
-      <Link to="/">
-        <Logo className="logo"></Logo>
-      </Link>
-      <div className="options">
-        <Link to="/shop" className="option">
-          Shop
-        </Link>
-        <Link to="/shop" className="option">
-          Contact
-        </Link>
-        {currentUser ? (
-          <div className="option" onClick={() => auth.signOut()}>
-            SignOut
-          </div>
-        ) : (
-          <Link to="/signin" className="option">
-            SignIn
-          </Link>
-        )}
-        <CartIcon></CartIcon>
-      </div>
-      {hidden ? null : <CartDropdown></CartDropdown>}
-    </div>
-  );
+	return (
+		<HeaderContainer>
+			<LogoContainer to="/">
+				<Logo className="logo"></Logo>
+			</LogoContainer>
+			<OptionsContainer>
+				<Option as={Link} to="/shop">
+					Shop
+				</Option>
+				<Option as={Link} to="/shop">
+					Contact
+				</Option>
+				{currentUser ? (
+					<Option as="div" onClick={() => auth.signOut()}>
+						SignOut
+					</Option>
+				) : (
+					<Option as={Link} to="/signin">
+						SignIn
+					</Option>
+				)}
+				<CartIcon></CartIcon>
+			</OptionsContainer>
+			{hidden ? null : <CartDropdown></CartDropdown>}
+		</HeaderContainer>
+	);
 }
 
 const mapStateToProps = createStructuredSelector({
-  currentUser: selectCurrentUser,
-  hidden: selectCartHidden,
+	currentUser: selectCurrentUser,
+	hidden: selectCartHidden,
 });
 
 export default connect(mapStateToProps)(Header);
