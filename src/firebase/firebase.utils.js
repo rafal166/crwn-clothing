@@ -61,12 +61,10 @@ export const convertCollectionsSnapshotToMap = (collections) => {
 		};
 	});
 
-	// eslint-disable-next-line
-	transformedCollection.reduce((accumulator, collection) => {
+	return transformedCollection.reduce((accumulator, collection) => {
 		accumulator[collection.title.toLowerCase()] = collection;
 		return accumulator;
 	}, {});
-	return transformedCollection;
 };
 
 // add new collection with documents with transaction

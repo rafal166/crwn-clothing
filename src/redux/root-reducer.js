@@ -8,16 +8,16 @@ import directoryReducer from './directory/directory.reducer';
 import shopReducer from './shop/shop.reducer';
 
 const persistConfig = {
-  key: 'root', // choose key
-  storage: storage, // choose storage type (local, session)
-  whitelist: ['cart'], // which keys to persist
+	key: 'root', // choose key
+	storage: storage, // choose storage type (local, session)
+	whitelist: ['cart'], // which keys to persist
 };
 
 const rootReducer = combineReducers({
-  user: userReducer,
-  cart: cartReducer,
-  directory: directoryReducer,
-  shop: shopReducer,
+	user: userReducer,
+	cart: cartReducer,
+	directory: directoryReducer,
+	shop: shopReducer,
 });
 
 export default persistReducer(persistConfig, rootReducer);
